@@ -2,7 +2,7 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import React from "react";
 
-const SearchBox = ({ filterTerm, setFilterTerm }) => {
+const SearchBox = ({ filterVideos, setFilterVideos }) => {
   return (
     <div className="flex font-[Poppins] border rounded-lg">
       <button className="py-1">
@@ -11,8 +11,8 @@ const SearchBox = ({ filterTerm, setFilterTerm }) => {
       <input
         type="text"
         placeholder="Search videos"
-        value={filterTerm}
-        onChange={(e) => setFilterTerm(e.target.value)}
+        value={filterVideos}
+        onChange={(e) => setFilterVideos(e.target.value)}
         className="rounded-lg"
       />
     </div>
