@@ -10,16 +10,23 @@ import ScrollContainer from "./ScrollContainer";
 
 const CardVideo = () => {
   const [videos, setVideos] = useState([]);
-  const [filterTerm, setFilterTerm] = useState("");
+  const [filterVideos, setFilterVideos] = useState("");
   const [sortOption, setSortOption] = useState("");
 
   const sortedVideos = [...videos];
 
-  if (sortOption === "title") {
-    sortedVideos.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sortOption === "title") {
-    sortedVideos.sort((a, b) => b.title.localeCompare(a.title));
-  }
+  //Create a dropdown search function
+  const handleInputChange = (event) => {
+    event.preventDefault();
+    console.log(search);
+    if (!search) {
+      return;
+    }
+    let filteredData = videos.filter((video) => {
+      return video.title.toLowerCase().includes(search.toLowerCase());
+    });
+    setFilteredData([...filteredData]);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,7 +68,10 @@ const CardVideo = () => {
         <MainHeader />
         <div className="flex">
           <div>
-            <SearchBox filterTerm={filterTerm} setFilterTerm={setFilterTerm} />
+            <SearchBox
+              filterVideos={filterVideos}
+              setFilterVideos={setFilterVideos}
+            />
           </div>
           <div className="px-5">
             <FilterOption
@@ -82,7 +92,7 @@ const CardVideo = () => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {sortedVideos
           .filter((video) =>
-            video.title.toLowerCase().includes(filterTerm.toLowerCase())
+            video.title.toLowerCase().includes(filterVideos.toLowerCase())
           )
           .map((video) => (
             <li
