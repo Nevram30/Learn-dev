@@ -99,7 +99,7 @@ const CardVideo = () => {
               key={video.id}
               className="rounded-lg overflow-hidden shadow-md hover:shadow-lg"
             >
-              <div className="aspect-w-16 aspect-h-32">
+              <div className="aspect-video aspect-h-32">
                 <iframe
                   src={`https://www.youtube.com/embed/${video.id}`}
                   title={video.title}
