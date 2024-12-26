@@ -1,19 +1,20 @@
 "use client";
 import React, { useState } from "react";
-import  useYoutubeVideos  from "../hooks/useYoutubeData";
+import useYoutubeVideos  from "../hooks/useYoutubeData";
 import SearchBox from "./SearchBox";
 import ProfileProps from "./ProfileProps";
 import MainSetting from "./MainSetting";
 import MainHeader from "./MainHeader";
 import ScrollContainer from "./ScrollContainer";
 import VideoList from "./VideoList";
+import ErrorCard from "./ErrorCard";
 
 const CardVideo = () => {
   const [filterVideos, setFilterVideos] = useState("");
   const { videos, isLoading, error } = useYoutubeVideos();
 
   if (error) {
-    return <div className="p-6 text-red-500">Error loading videos: {error}</div>;
+    return <ErrorCard error={error} />;
   }
 
   return (

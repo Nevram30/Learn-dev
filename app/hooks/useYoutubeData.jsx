@@ -67,6 +67,7 @@ const useYoutubeVideos = () => {
         });
 
         const videoLists = await Promise.all(promises);
+
         const combinedVideoList = videoLists.flat();
 
         setVideos(combinedVideoList);
